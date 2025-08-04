@@ -16,7 +16,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class InfinitiesCellInventory implements StorageCell {
     private final ItemStack stack;
-    private final AEKey icon;
     private final KeyList keys;
     public static final ICellHandler HANDLER = new Handler();
     public InfinitiesCellInventory(ItemStack stack) {
@@ -24,7 +23,6 @@ public class InfinitiesCellInventory implements StorageCell {
             throw new IllegalArgumentException("Cell isn't an infinity cell!");
         }
         this.stack = stack;
-        this.icon = cell.getIcon().get();
         this.keys = cell.getKeys();
     }
     @Override
@@ -64,7 +62,7 @@ public class InfinitiesCellInventory implements StorageCell {
 
     @Override
     public boolean isPreferredStorageFor(AEKey what, IActionSource source) {
-        return this.icon.equals(what);
+        return this.keys.contains(what);
     }
 
     private static class Handler implements ICellHandler {

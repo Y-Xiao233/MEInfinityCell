@@ -26,7 +26,7 @@ StartupEvents.registry("item",event =>{
 
 //In addition to adding infinity cell for one item, you can also add infinities cell for multiple items
 StartupEvents.registry("item",event =>{
-    event.create("infinities_cell","meinfinitycell:infinities_cell").setIcon(AEKeyHelper.item("minecraft:diamond")).setName(Text.literal("test")).setKeys(KeyList.of().adds(keys =>{
+    event.create("infinities_cell","meinfinitycell:infinities_cell").setName(Text.literal("test")).setKeys(KeyList.of().adds(keys =>{
         keys.add(AEKeyHelper.item("minecraft:diamond"))
         keys.add(AEKeyHelper.item("minecraft:iron_ingot"))
         keys.add(AEKeyHelper.item("minecraft:gold_ingot"))
