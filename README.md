@@ -23,4 +23,15 @@ StartupEvents.registry("item",event =>{
     //Additional Mod required: Ars Énergistique
     event.create("infinity_source_cell","meinfinitycell:infinity_cell").type(() => $SourceKey.KEY)
 })
+
+//In addition to adding infinity cell for one item, you can also add infinities cell for multiple items
+StartupEvents.registry("item",event =>{
+    event.create("infinities_cell","meinfinitycell:infinities_cell").setIcon(AEKeyHelper.item("minecraft:diamond")).setName(Text.literal("test")).setKeys(KeyList.of().adds(keys =>{
+        keys.add(AEKeyHelper.item("minecraft:diamond"))
+        keys.add(AEKeyHelper.item("minecraft:iron_ingot"))
+        keys.add(AEKeyHelper.item("minecraft:gold_ingot"))
+        keys.add(AEKeyHelper.item("minecraft:copper_ingot"))
+        keys.add(AEKeyHelper.item("minecraft:stone"))
+    }))
+})
 ```
