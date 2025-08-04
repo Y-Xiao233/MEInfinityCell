@@ -6,7 +6,9 @@ import dev.latvian.mods.kubejs.registry.RegistryInfo;
 import dev.latvian.mods.kubejs.script.BindingsEvent;
 import net.yxiao233.meinfinitycell.common.compact.kubejs.helper.FluxKeyHelper;
 import net.yxiao233.meinfinitycell.common.compact.kubejs.helper.MekanismKeyHelper;
-import net.yxiao233.meinfinitycell.common.helper.LoadList;
+import net.yxiao233.meinfinitycell.common.compact.kubejs.items.InfinitiesCellItemBuilder;
+import net.yxiao233.meinfinitycell.common.utils.KeyList;
+import net.yxiao233.meinfinitycell.common.utils.LoadList;
 import net.yxiao233.meinfinitycell.common.compact.kubejs.items.InfinityCellItemBuilder;
 
 public class ModKubeJSPlugin extends KubeJSPlugin {
@@ -20,10 +22,12 @@ public class ModKubeJSPlugin extends KubeJSPlugin {
             event.add("FluxKeyHelper", FluxKeyHelper.class);
             event.add("EnergyType", EnergyType.class);
         }
+        event.add("KeyList", KeyList.class);
     }
 
     @Override
     public void init() {
         RegistryInfo.ITEM.addType("meinfinitycell:infinity_cell", InfinityCellItemBuilder.class, InfinityCellItemBuilder::new);
+        RegistryInfo.ITEM.addType("meinfinitycell:infinities_cell", InfinitiesCellItemBuilder.class,InfinitiesCellItemBuilder::new);
     }
 }

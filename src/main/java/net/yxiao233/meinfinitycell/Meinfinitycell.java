@@ -7,6 +7,7 @@ import appeng.api.storage.StorageCells;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.yxiao233.meinfinitycell.common.inventory.InfinitiesCellInventory;
 import net.yxiao233.meinfinitycell.common.inventory.InfinityCellInventory;
 import net.yxiao233.meinfinitycell.common.registry.MICCreativeModeTab;
 import net.yxiao233.meinfinitycell.common.registry.MICItems;
@@ -20,6 +21,7 @@ public class Meinfinitycell {
         MICItems.ITEMS.register(modEventBus);
         MICCreativeModeTab.CREATIVE_MODE_TAB.register(modEventBus);
         StorageCells.addCellHandler(InfinityCellInventory.HANDLER);
+        StorageCells.addCellHandler(InfinitiesCellInventory.HANDLER);
     }
 
     public static long getMax(AEKey key){
