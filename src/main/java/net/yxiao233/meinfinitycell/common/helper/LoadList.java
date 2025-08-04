@@ -1,4 +1,4 @@
-package net.yxiao233.meinfinitycell.common;
+package net.yxiao233.meinfinitycell.common.helper;
 
 import net.minecraftforge.fml.ModList;
 

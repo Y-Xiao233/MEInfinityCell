@@ -1,3 +1,6 @@
 {
-  "parent": "meinfinitycell:item/infinity_cobblestone_cell"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "meinfinitycell:item/infinity_water_cell"
+  }
 }

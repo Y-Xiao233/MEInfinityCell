@@ -1,1 +1,1 @@
-net.yxiao233.ifeu.common.compact.kubejs.ModKubeJSPlugin
+net.yxiao233.meinfinitycell.common.compact.kubejs.ModKubeJSPlugin
