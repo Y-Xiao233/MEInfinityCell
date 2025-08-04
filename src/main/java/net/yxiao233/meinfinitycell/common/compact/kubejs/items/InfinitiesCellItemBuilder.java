@@ -1,6 +1,5 @@
 package net.yxiao233.meinfinitycell.common.compact.kubejs.items;
 
-import appeng.api.stacks.AEKey;
 import dev.latvian.mods.kubejs.item.ItemBuilder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -8,10 +7,7 @@ import net.minecraft.world.item.Item;
 import net.yxiao233.meinfinitycell.common.items.InfinitiesCell;
 import net.yxiao233.meinfinitycell.common.utils.KeyList;
 
-import java.util.function.Supplier;
-
 public class InfinitiesCellItemBuilder extends ItemBuilder {
-    protected Supplier<AEKey> icon;
     protected Component name = null;
     protected KeyList keys;
     public InfinitiesCellItemBuilder(ResourceLocation i) {
@@ -27,13 +23,8 @@ public class InfinitiesCellItemBuilder extends ItemBuilder {
         this.keys = keys;
         return this;
     }
-
-    public InfinitiesCellItemBuilder setIcon(Supplier<AEKey> icon){
-        this.icon = icon;
-        return this;
-    }
     @Override
     public Item createObject() {
-        return new InfinitiesCell(icon,keys,name);
+        return new InfinitiesCell(keys,name);
     }
 }
