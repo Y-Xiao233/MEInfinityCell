@@ -68,6 +68,14 @@ public class KeyList {
         });
     }
 
+    public boolean isEmpty(){
+        return this.keys.isEmpty();
+    }
+
+    public ArrayList<Supplier<AEKey>> getList(){
+        return this.keys;
+    }
+
     public StorageCell getCellInventory(ItemStack is, ISaveProvider container) {
         return !is.isEmpty() && is.getItem() instanceof InfinitiesCell ? new InfinitiesCellInventory(is) : null;
     }

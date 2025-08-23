@@ -1,7 +1,5 @@
 package net.yxiao233.meinfinitycell;
 
-import appeng.api.stacks.AEFluidKey;
-import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import appeng.api.storage.StorageCells;
 import net.minecraftforge.eventbus.api.IEventBus;
