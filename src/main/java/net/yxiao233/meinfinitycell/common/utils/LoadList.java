@@ -1,6 +1,6 @@
 package net.yxiao233.meinfinitycell.common.utils;
 
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 public class LoadList {
     public static final boolean MEKANISM = ModList.get().isLoaded("mekanism");

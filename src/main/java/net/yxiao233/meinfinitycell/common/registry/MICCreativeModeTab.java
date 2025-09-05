@@ -3,13 +3,13 @@ package net.yxiao233.meinfinitycell.common.registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.yxiao233.meinfinitycell.Meinfinitycell;
 
 public class MICCreativeModeTab {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Meinfinitycell.MODID);
-    public static final RegistryObject<CreativeModeTab> MIC_TAB = CREATIVE_MODE_TAB.register("mic_tab", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab,CreativeModeTab> MIC_TAB = CREATIVE_MODE_TAB.register("mic_tab", () -> CreativeModeTab.builder()
             .icon(() -> MICItems.INFINITY_COBBLESTONE_CELL.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
 
