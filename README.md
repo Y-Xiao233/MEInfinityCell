@@ -11,10 +11,10 @@ StartupEvents.registry("item",event =>{
     //Additional Mod required: Applied Flux
     event.create("infinity_fe_cell","meinfinitycell:infinity_cell").type(FluxKeyHelper.of(EnergyType.FE))
     //Additional Mod required: Applied Mekanistics
-    event.create("infinity_oxygen_cell","meinfinitycell:infinity_cell").type(MekanismKeyHelper.gas("mekanism:oxygen"))
-    event.create("infinity_carbon_cell","meinfinitycell:infinity_cell").type(MekanismKeyHelper.infuseType("mekanism:carbon"))
-    event.create("infinity_yellow_cell","meinfinitycell:infinity_cell").type(MekanismKeyHelper.pigment("mekanism:yellow"))
-    event.create("infinity_clean_osmium_cell","meinfinitycell:infinity_cell").type(MekanismKeyHelper.slurry("mekanism:clean_osmium"))
+    event.create("infinity_oxygen_cell","meinfinitycell:infinity_cell").type(MekanismKeyHelper.of("mekanism:oxygen"))
+    event.create("infinity_carbon_cell","meinfinitycell:infinity_cell").type(MekanismKeyHelper.of("mekanism:carbon"))
+    event.create("infinity_yellow_cell","meinfinitycell:infinity_cell").type(MekanismKeyHelper.of("mekanism:yellow"))
+    event.create("infinity_clean_osmium_cell","meinfinitycell:infinity_cell").type(MekanismKeyHelper.of("mekanism:clean_osmium"))
 })
 
 //Of course, you can also use "Java.loadClass()" to obtain an AEKey to register an infinity cell
