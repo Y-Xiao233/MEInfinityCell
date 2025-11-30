@@ -99,8 +99,8 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     //ae2
-    implementation fg.deobf("curse.maven:applied-energistics-2-223794:6833937")
-    implementation fg.deobf("curse.maven:guideme-1173950:6679102")
+    implementation fg.deobf("curse.maven:applied-energistics-2-223794:7148487")
+    implementation fg.deobf("curse.maven:guideme-1173950:7127447")
 
     //jei
     implementation fg.deobf("curse.maven:jei-238222:6600311")

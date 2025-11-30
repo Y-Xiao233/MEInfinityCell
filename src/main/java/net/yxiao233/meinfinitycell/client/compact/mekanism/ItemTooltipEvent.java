@@ -1,14 +1,9 @@
-package net.yxiao233.meinfinitycell.client;
+package net.yxiao233.meinfinitycell.client.compact.mekanism;
 
 import appeng.api.stacks.AEFluidKey;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.AEKeyType;
-import me.ramidzkh.mekae2.ae2.MekanismKey;
-import me.ramidzkh.mekae2.ae2.MekanismKeyType;
-import mekanism.common.registries.MekanismBlocks;
-import mekanism.common.tier.ChemicalTankTier;
-import mekanism.common.util.ChemicalUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -41,12 +36,6 @@ public class ItemTooltipEvent {
                         Item bucket = fluidKey.toStack(1000).getFluid().getBucket();
                         if(event.getItemStack().is(bucket)){
                             event.getToolTip().add(Component.translatable("tooltip.meinfinitycell.fluid.infinity_in",cell.getName(cell.getDefaultInstance()).copy().withStyle(ChatFormatting.GOLD)));
-                        }
-                    }else if(aeKey.getType().equals(MekanismKeyType.TYPE)){
-                        MekanismKey mekanismKey = (MekanismKey) aeKey;
-                        ItemStack creativeChemicalTank = ChemicalUtil.getFilledVariant(MekanismBlocks.CREATIVE_CHEMICAL_TANK.getItemStack(), ChemicalTankTier.CREATIVE.getStorage(), mekanismKey.getStack().getRaw());
-                        if(ItemStack.isSameItemSameTags(event.getItemStack(),creativeChemicalTank)){
-                            event.getToolTip().add(Component.translatable("tooltip.meinfinitycell.chemical.infinity_in",cell.getName(cell.getDefaultInstance()).copy().withStyle(ChatFormatting.GOLD)));
                         }
                     }
                 }
