@@ -12,6 +12,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import java.util.Objects;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class AEKeyHelper {
     public static Supplier<AEKey> item(ResourceLocation id){
         return () -> AEItemKey.of(Objects.requireNonNull(BuiltInRegistries.ITEM.get(id)));

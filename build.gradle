@@ -77,22 +77,28 @@ repositories{
 
 dependencies {
     //ae2
-    implementation "curse.maven:applied-energistics-2-223794:6890346"
-    implementation "curse.maven:guideme-1173950:6812025"
+    implementation "curse.maven:applied-energistics-2-223794:7027323"
+    implementation "curse.maven:guideme-1173950:7127444"
 
     //applied flux
     implementation "curse.maven:applied-flux-965012:6649565"
     implementation "curse.maven:glodium-957920:5821676"
 
+    //jei
+    implementation "curse.maven:jei-238222:7270455"
+
+    //ae2-jei integration
+    implementation "curse.maven:ae2-jei-integration-1074338:5748513"
+
     //mekanism
-    implementation "curse.maven:mekanism-268560:6895130"
+    implementation "curse.maven:mekanism-268560:7132168"
 
     //applied mekanistics
-    implementation "curse.maven:applied-mekanistics-574300:5978711"
+    implementation "curse.maven:applied-mekanistics-574300:7096962"
 
     //kubejs
-    implementation "curse.maven:kubejs-238086:5810100"
-    implementation "curse.maven:rhino-416294:6886923"
+    implementation "curse.maven:kubejs-238086:7276129"
+    implementation "curse.maven:rhino-416294:7104526"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

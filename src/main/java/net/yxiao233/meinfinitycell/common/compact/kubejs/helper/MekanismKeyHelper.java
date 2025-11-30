@@ -15,13 +15,14 @@ import net.neoforged.neoforge.fluids.FluidType;
 
 import java.util.function.Supplier;
 
-@SuppressWarnings("removal")
+@SuppressWarnings({"removal","unused"})
 public class MekanismKeyHelper {
     public static Supplier<AEKey> of(Object from){
         return () -> MekanismKey.of(stackOf(from));
     }
 
     @HideFromJS
+    @SuppressWarnings({"rawtypes","unchecked"})
     public static ChemicalStack stackOf(Object from) {
         return switch (from) {
             case null -> null;
@@ -54,7 +55,7 @@ public class MekanismKeyHelper {
     @HideFromJS
     static ChemicalStack readStack(StringReader reader) throws CommandSyntaxException {
         reader.skipWhitespace();
-        var amount = FluidWrapper.readFluidAmount(reader);
+        var amount = FluidWrapper.readFluidAmount(reader).getOrThrow();
         var chemical = read(reader);
         return new ChemicalStack(chemical, amount);
     }

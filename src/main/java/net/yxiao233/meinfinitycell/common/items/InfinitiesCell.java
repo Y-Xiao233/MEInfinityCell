@@ -18,9 +18,12 @@ import net.yxiao233.meinfinitycell.common.utils.KeyList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CopyOnWriteArrayList;
 
+@SuppressWarnings("unused")
 public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
     protected Component name;
     protected final KeyList keys;
@@ -60,7 +63,7 @@ public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.translatable("tooltip.meinfinitycell.infinity").withStyle(ChatFormatting.GREEN));
     }
 
@@ -89,12 +92,20 @@ public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
         if(level.isClientSide()){
             if(player.isShiftKeyDown() && this.getKeys() != null && !this.getKeys().isEmpty()){
                 player.sendSystemMessage(this.getName(this.getDefaultInstance()).copy().withStyle(ChatFormatting.GOLD).append(Component.translatable("tooltip.meinfinitycell.show_context").withStyle(ChatFormatting.WHITE)));
+                HashMap<Component,List<Component>> map = new HashMap<>();
                 this.getKeys().getList().forEach((key ->{
                     AEKey aeKey = key.get();
                     if(aeKey != null){
-                        player.sendSystemMessage(aeKey.getDisplayName().copy().withStyle(ChatFormatting.GREEN));
+                        Component type = aeKey.getType().getDescription().copy().withStyle(ChatFormatting.AQUA);
+                        Component component = aeKey.getDisplayName().copy().withStyle(ChatFormatting.GREEN);
+                        map.computeIfAbsent(type,t -> new CopyOnWriteArrayList<>()).add(component);
                     }
                 }));
+                map.forEach((type, list) ->{
+                    player.sendSystemMessage(type.copy().append(Component.translatable("tooltip.meinfinitycell.type")).append(":"));
+                    list.forEach(player::sendSystemMessage);
+                    player.sendSystemMessage(Component.literal(""));
+                });
             }
             return InteractionResultHolder.success(this.getDefaultInstance());
         }else{

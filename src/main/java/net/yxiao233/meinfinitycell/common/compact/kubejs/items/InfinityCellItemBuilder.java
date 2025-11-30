@@ -12,6 +12,7 @@ import net.yxiao233.meinfinitycell.common.items.InfinityCell;
 import java.util.Objects;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class InfinityCellItemBuilder extends ItemBuilder {
     private Supplier<AEKey> key;
     public InfinityCellItemBuilder(ResourceLocation i) {

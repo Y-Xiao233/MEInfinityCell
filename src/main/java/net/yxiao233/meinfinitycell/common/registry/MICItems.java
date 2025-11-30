@@ -9,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.yxiao233.meinfinitycell.Meinfinitycell;
 import net.yxiao233.meinfinitycell.common.items.InfinityCell;
 
+@SuppressWarnings("unused")
 public class MICItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, Meinfinitycell.MODID);
 

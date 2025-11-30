@@ -17,6 +17,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class KeyList {
     private final ArrayList<Supplier<AEKey>> keys;
     public KeyList(){
@@ -25,7 +26,7 @@ public class KeyList {
     public KeyList(ArrayList<Supplier<AEKey>> keys){
         this.keys = keys;
     }
-    public static KeyList of(){
+    public static KeyList create(){
         return new KeyList();
     }
 
@@ -63,9 +64,7 @@ public class KeyList {
     }
 
     public void getAvailableStacks(KeyCounter out){
-        this.keys.forEach(keySupplier -> {
-            out.add(keySupplier.get(), Meinfinitycell.getMax(keySupplier.get()));
-        });
+        this.keys.forEach(keySupplier -> out.add(keySupplier.get(), Meinfinitycell.getMax(keySupplier.get())));
     }
 
     public boolean isEmpty(){
@@ -79,8 +78,9 @@ public class KeyList {
     public StorageCell getCellInventory(ItemStack is, ISaveProvider container) {
         return !is.isEmpty() && is.getItem() instanceof InfinitiesCell ? new InfinitiesCellInventory(is) : null;
     }
+    @SuppressWarnings({"unchecked","rawtypes"})
     public Optional<TooltipComponent> getTooltipImage(ItemStack is) {
-        StorageCell handler = this.getCellInventory(is, (ISaveProvider)null);
+        StorageCell handler = this.getCellInventory(is, null);
         if (handler == null) {
             return Optional.empty();
         } else {
@@ -90,9 +90,7 @@ public class KeyList {
                 content = new ArrayList<AEKey>();
                 int maxCountShown = AEConfig.instance().getTooltipMaxCellContentShown();
 
-                keys.forEach(keySupplier -> {
-                    ((List)content).add(new GenericStack(keySupplier.get(),Meinfinitycell.getMax(keySupplier.get())));
-                });
+                keys.forEach(keySupplier -> ((List)content).add(new GenericStack(keySupplier.get(),Meinfinitycell.getMax(keySupplier.get()))));
 
                 hasMoreContent = ((List)content).size() > maxCountShown;
                 if (((List)content).size() > maxCountShown) {

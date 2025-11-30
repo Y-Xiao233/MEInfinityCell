@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class InfinityCell extends AEBaseItem implements ICellWorkbenchItem {
     protected final Supplier<AEKey> key;
     public InfinityCell(){
@@ -54,7 +55,7 @@ public class InfinityCell extends AEBaseItem implements ICellWorkbenchItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.translatable("tooltip.meinfinitycell.infinity").withStyle(ChatFormatting.GREEN));
     }
 
