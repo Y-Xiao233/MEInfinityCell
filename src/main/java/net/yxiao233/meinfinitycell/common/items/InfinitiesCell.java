@@ -2,14 +2,10 @@ package net.yxiao233.meinfinitycell.common.items;
 
 import appeng.api.config.FuzzyMode;
 import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
 import appeng.api.storage.cells.ICellWorkbenchItem;
 import appeng.items.AEBaseItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -18,17 +14,14 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.yxiao233.meinfinitycell.common.utils.KeyList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
+@SuppressWarnings("unused")
 public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
     protected Component name;
     protected final KeyList keys;
@@ -95,12 +88,20 @@ public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
         if(level.isClientSide()){
             if(player.isShiftKeyDown() && this.getKeys() != null && !this.getKeys().isEmpty()){
                 player.sendSystemMessage(this.getName(this.getDefaultInstance()).copy().withStyle(ChatFormatting.GOLD).append(Component.translatable("tooltip.meinfinitycell.show_context").withStyle(ChatFormatting.WHITE)));
+                HashMap<Component,List<Component>> map = new HashMap<>();
                 this.getKeys().getList().forEach((key ->{
                     AEKey aeKey = key.get();
                     if(aeKey != null){
-                        player.sendSystemMessage(aeKey.getDisplayName().copy().withStyle(ChatFormatting.GREEN));
+                        Component type = aeKey.getType().getDescription().copy().withStyle(ChatFormatting.AQUA);
+                        Component component = aeKey.getDisplayName().copy().withStyle(ChatFormatting.GREEN);
+                        map.computeIfAbsent(type,t -> new CopyOnWriteArrayList<>()).add(component);
                     }
                 }));
+                map.forEach((type, list) ->{
+                    player.sendSystemMessage(type.copy().append(Component.translatable("tooltip.meinfinitycell.type")).append(":"));
+                    list.forEach(player::sendSystemMessage);
+                    player.sendSystemMessage(Component.literal(""));
+                });
             }
             return InteractionResultHolder.success(this.getDefaultInstance());
         }else{

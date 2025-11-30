@@ -5,13 +5,13 @@ import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class AEKeyHelper {
     public static Supplier<AEKey> item(ResourceLocation id){
         return () -> AEItemKey.of(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(id)));

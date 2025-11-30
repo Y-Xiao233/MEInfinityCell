@@ -3,5 +3,8 @@
   "item.meinfinitycell.infinity_cell": "ME %d Infinity Cell",
   "tooltip.meinfinitycell.infinity": "Infinity!",
   "tooltip.meinfinitycell.show_context": " Includes the following items:",
-  "tooltip.meinfinitycell.infinity_in": "Infinity in %d"
+  "tooltip.meinfinitycell.infinity_in": "Infinity in %d",
+  "tooltip.meinfinitycell.fluid.infinity_in": "Infinity in %d as Fluid",
+  "tooltip.meinfinitycell.chemical.infinity_in": "Infinity in %d as Chemical",
+  "tooltip.meinfinitycell.type": " Type"
 }

@@ -3,5 +3,8 @@
   "item.meinfinitycell.infinity_cell": "ME无限%d元件",
   "tooltip.meinfinitycell.infinity": "无限!",
   "tooltip.meinfinitycell.show_context": " 包含以下物品: ",
-  "tooltip.meinfinitycell.infinity_in": "在%d中无限"
+  "tooltip.meinfinitycell.infinity_in": "在%d中无限",
+  "tooltip.meinfinitycell.fluid.infinity_in": "在%d中以流体形式无限",
+  "tooltip.meinfinitycell.chemical.infinity_in": "在%d中以化学品形式无限",
+  "tooltip.meinfinitycell.type": " 类型"
 }

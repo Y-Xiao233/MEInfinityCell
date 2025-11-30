@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.yxiao233.meinfinitycell.common.items.InfinitiesCell;
 import net.yxiao233.meinfinitycell.common.utils.KeyList;
 
+@SuppressWarnings("unused")
 public class InfinitiesCellItemBuilder extends ItemBuilder {
     protected Component name = null;
     protected KeyList keys;

@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class MekanismKeyHelper {
     public static Supplier<AEKey> gas(ResourceLocation id){
         return () -> MekanismKey.of(Gas.getFromRegistry(id).getStack(256));
