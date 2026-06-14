@@ -1,4 +1,4 @@
-package net.yxiao233.meinfinitycell.client.compact.mekanism;
+package net.yxiao233.meinfinitycell.client;
 
 import appeng.api.stacks.AEFluidKey;
 import appeng.api.stacks.AEItemKey;
@@ -8,19 +8,20 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.yxiao233.meinfinitycell.Meinfinitycell;
 import net.yxiao233.meinfinitycell.common.items.InfinitiesCell;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("unused")
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Meinfinitycell.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class ItemTooltipEvent {
+@SuppressWarnings({"unused"})
+@EventBusSubscriber(modid = Meinfinitycell.MODID, value = Dist.CLIENT)
+public class ItemTooltipEvents {
     @SubscribeEvent
-    public static void onAddInfinityItemsTip(net.minecraftforge.event.entity.player.ItemTooltipEvent event){
+    public static void onAddInfinityItemsTip(ItemTooltipEvent event){
         ArrayList<InfinitiesCell> list = InfinitiesCell.LIST;
         if(!list.isEmpty()){
             list.forEach(cell -> cell.getKeys().getList().forEach(key ->{
@@ -28,7 +29,7 @@ public class ItemTooltipEvent {
                 if(aeKey != null){
                     if(aeKey.getType().equals(AEKeyType.items())){
                         AEItemKey itemKey = (AEItemKey) aeKey;
-                        if(ItemStack.isSameItemSameTags(event.getItemStack(),itemKey.toStack())){
+                        if(ItemStack.isSameItemSameComponents(event.getItemStack(),itemKey.toStack())){
                             event.getToolTip().add(Component.translatable("tooltip.meinfinitycell.infinity_in",cell.getName(cell.getDefaultInstance()).copy().withStyle(ChatFormatting.GOLD)));
                         }
                     }else if(aeKey.getType().equals(AEKeyType.fluids())){
