@@ -7,19 +7,24 @@ import appeng.items.AEBaseItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import net.yxiao233.meinfinitycell.common.utils.KeyList;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Consumer;
 
 @SuppressWarnings("unused")
 public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
@@ -27,12 +32,8 @@ public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
     protected final KeyList keys;
     public static final ArrayList<InfinitiesCell> LIST = new ArrayList<>();
 
-    public InfinitiesCell(KeyList keys,Component name){
-        this(keys,name,true);
-    }
-
-    public InfinitiesCell(KeyList keys,Component name,boolean needTip){
-        super(new Properties().stacksTo(1));
+    public InfinitiesCell(Properties properties, KeyList keys, Component name, boolean needTip){
+        super(properties.stacksTo(1));
         this.keys = keys;
         this.name = name;
         if(needTip){
@@ -50,18 +51,19 @@ public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-
         return Component.translatable("item.meinfinitycell.infinity_cell",getName());
     }
 
+
     @Override
-    public void addToMainCreativeTab(CreativeModeTab.Output output) {
+    public void addToMainCreativeTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) {
         output.accept(this);
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level pLevel, @NotNull List<Component> list, @NotNull TooltipFlag isAdvanced) {
-        list.add(Component.translatable("tooltip.meinfinitycell.infinity").withStyle(ChatFormatting.GREEN));
+    @SuppressWarnings("deprecation")
+    public void appendHoverText(@NonNull ItemStack stack, @NonNull TooltipContext context, @NonNull TooltipDisplay display, Consumer<Component> builder, @NonNull TooltipFlag tooltipFlag) {
+        builder.accept(Component.translatable("tooltip.meinfinitycell.infinity").withStyle(ChatFormatting.GREEN));
     }
 
     @Override
@@ -84,7 +86,7 @@ public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+    public @NonNull InteractionResult use(@NonNull Level level, @NonNull Player player, @NonNull InteractionHand hand) {
         if(level.isClientSide()){
             if(player.isShiftKeyDown() && this.getKeys() != null && !this.getKeys().isEmpty()){
                 player.sendSystemMessage(this.getName(this.getDefaultInstance()).copy().withStyle(ChatFormatting.GOLD).append(Component.translatable("tooltip.meinfinitycell.show_context").withStyle(ChatFormatting.WHITE)));
@@ -103,7 +105,7 @@ public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
                     player.sendSystemMessage(Component.literal(""));
                 });
             }
-            return InteractionResultHolder.success(this.getDefaultInstance());
+            return InteractionResult.SUCCESS;
         }else{
             return super.use(level, player, hand);
         }

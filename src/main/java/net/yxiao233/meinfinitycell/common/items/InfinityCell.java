@@ -1,67 +1,34 @@
 package net.yxiao233.meinfinitycell.common.items;
 
 import appeng.api.config.FuzzyMode;
-import appeng.api.stacks.AEFluidKey;
-import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.GenericStack;
 import appeng.api.storage.cells.ICellWorkbenchItem;
 import appeng.items.AEBaseItem;
 import appeng.items.storage.StorageCellTooltipComponent;
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.yxiao233.meinfinitycell.Meinfinitycell;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
 public class InfinityCell extends AEBaseItem implements ICellWorkbenchItem {
     protected final Supplier<AEKey> key;
-    public InfinityCell(){
-        super(new Properties().stacksTo(1));
-        this.key = () -> AEItemKey.of(Items.COBBLESTONE);
-    }
-    public InfinityCell(Properties properties) {
-        super(properties);
-        this.key = () -> AEItemKey.of(Items.COBBLESTONE);
-    }
-
-    public InfinityCell(Supplier<AEKey> key, Properties properties){
-        super(properties);
+    public InfinityCell(Properties properties, Supplier<AEKey> key){
+        super(properties.stacksTo(1));
         this.key = key;
-    }
-
-    public InfinityCell(Supplier<AEKey> key){
-        super(new Properties().stacksTo(1));
-        this.key = key;
-    }
-
-    public InfinityCell(ItemStack stack){
-        super(new Properties().stacksTo(1));
-        this.key = () -> AEItemKey.of(stack);
-    }
-
-    public InfinityCell(Fluid fluid, CompoundTag tag){
-        super(new Properties().stacksTo(1));
-        this.key = () -> AEFluidKey.of(fluid,tag);
-    }
-
-    public InfinityCell(Fluid fluid){
-        super(new Properties().stacksTo(1));
-        this.key = () -> AEFluidKey.of(fluid);
     }
 
     @Override
@@ -70,14 +37,16 @@ public class InfinityCell extends AEBaseItem implements ICellWorkbenchItem {
     }
 
     @Override
-    public void addToMainCreativeTab(CreativeModeTab.Output output) {
+    public void addToMainCreativeTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) {
         output.accept(this);
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level pLevel, @NotNull List<Component> list, @NotNull TooltipFlag isAdvanced) {
-        list.add(Component.translatable("tooltip.meinfinitycell.infinity").withStyle(ChatFormatting.GREEN));
+    @SuppressWarnings("deprecation")
+    public void appendHoverText(@NonNull ItemStack stack, @NonNull TooltipContext context, @NonNull TooltipDisplay display, Consumer<Component> builder, @NonNull TooltipFlag tooltipFlag) {
+        builder.accept(Component.translatable("tooltip.meinfinitycell.infinity").withStyle(ChatFormatting.GREEN));
     }
+
 
     @Override
     public @NotNull Optional<TooltipComponent> getTooltipImage(@NotNull ItemStack stack) {
