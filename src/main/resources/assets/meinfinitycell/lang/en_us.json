@@ -1,0 +1,9 @@
+{
+  "itemGroup.meinfinitycell": "ME Infinity Cell",
+  "item.meinfinitycell.infinity_cell": "ME %s Infinity Cell",
+  "tooltip.meinfinitycell.infinity": "Infinity!",
+  "tooltip.meinfinitycell.show_context": " Includes the following items:",
+  "tooltip.meinfinitycell.infinity_in": "Infinity in %s",
+  "tooltip.meinfinitycell.fluid.infinity_in": "Infinity in %s as Fluid",
+  "tooltip.meinfinitycell.type": " Type"
+}
