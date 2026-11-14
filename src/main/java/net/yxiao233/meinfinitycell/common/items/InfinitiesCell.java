@@ -25,14 +25,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
 public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
     protected Component name;
-    protected final KeyList keys;
+    protected final Supplier<KeyList> keys;
     public static final ArrayList<InfinitiesCell> LIST = new ArrayList<>();
 
-    public InfinitiesCell(Properties properties, KeyList keys, Component name, boolean needTip){
+    public InfinitiesCell(Properties properties, Supplier<KeyList> keys, Component name, boolean needTip){
         super(properties.stacksTo(1));
         this.keys = keys;
         this.name = name;
@@ -68,7 +69,7 @@ public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
 
     @Override
     public @NotNull Optional<TooltipComponent> getTooltipImage(@NotNull ItemStack stack) {
-        return this.keys.getTooltipImage(stack);
+        return this.keys.get().getTooltipImage(stack);
     }
 
     @Override
@@ -81,17 +82,17 @@ public class InfinitiesCell extends AEBaseItem implements ICellWorkbenchItem {
 
     }
 
-    public KeyList getKeys(){
+    public Supplier<KeyList> getKeys(){
         return keys;
     }
 
     @Override
     public @NonNull InteractionResult use(@NonNull Level level, @NonNull Player player, @NonNull InteractionHand hand) {
         if(level.isClientSide()){
-            if(player.isShiftKeyDown() && this.getKeys() != null && !this.getKeys().isEmpty()){
+            if(player.isShiftKeyDown() && this.getKeys() != null && !this.getKeys().get().isEmpty()){
                 player.sendSystemMessage(this.getName(this.getDefaultInstance()).copy().withStyle(ChatFormatting.GOLD).append(Component.translatable("tooltip.meinfinitycell.show_context").withStyle(ChatFormatting.WHITE)));
                 HashMap<Component,List<Component>> map = new HashMap<>();
-                this.getKeys().getList().forEach((key ->{
+                this.getKeys().get().getList().forEach((key ->{
                     AEKey aeKey = key.get();
                     if(aeKey != null){
                         Component type = aeKey.getType().getDescription().copy().withStyle(ChatFormatting.AQUA);

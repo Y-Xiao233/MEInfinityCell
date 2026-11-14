@@ -24,7 +24,7 @@ public class ItemTooltipEvents {
     public static void onAddInfinityItemsTip(ItemTooltipEvent event){
         ArrayList<InfinitiesCell> list = InfinitiesCell.LIST;
         if(!list.isEmpty()){
-            list.forEach(cell -> cell.getKeys().getList().forEach(key ->{
+            list.forEach(cell -> cell.getKeys().get().getList().forEach(key ->{
                 AEKey aeKey = key.get();
                 if(aeKey != null){
                     if(aeKey.getType().equals(AEKeyType.items())){

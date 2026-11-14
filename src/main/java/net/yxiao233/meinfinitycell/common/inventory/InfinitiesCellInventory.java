@@ -23,7 +23,7 @@ public class InfinitiesCellInventory implements StorageCell {
             throw new IllegalArgumentException("Cell isn't an infinity cell!");
         }
         this.stack = stack;
-        this.keys = cell.getKeys();
+        this.keys = cell.getKeys().get();
     }
     @Override
     public CellState getStatus() {

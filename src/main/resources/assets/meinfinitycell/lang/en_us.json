@@ -5,5 +5,6 @@
   "tooltip.meinfinitycell.show_context": " Includes the following items:",
   "tooltip.meinfinitycell.infinity_in": "Infinity in %s",
   "tooltip.meinfinitycell.fluid.infinity_in": "Infinity in %s as Fluid",
-  "tooltip.meinfinitycell.type": " Type"
+  "tooltip.meinfinitycell.type": " Type",
+  "jei.meinfinitycell.cell_info": "Infinity Cell Info"
 }

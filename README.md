@@ -26,4 +26,10 @@ StartupEvents.registry("item",event =>{
         ))
     }))
 })
+
+//By Mod
+event.create("mod_infinities_cell","meinfinitycell:infinities_cell").setName(Text.literal("ModTest")).byMod("ae2")
+
+//By Tag
+event.create("tag_infinities_cell","meinfinitycell:infinities_cell").setName(Text.literal("TagTest")).byTags(AEKeyHelper.itemTag("minecraft:planks"),AEKeyHelper.fluidTag("minecraft:water"))
 ```

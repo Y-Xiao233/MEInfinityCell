@@ -23,7 +23,7 @@ public class Meinfinitycell {
     }
 
     public static long getMax(AEKey key){
-        return (long) Integer.MAX_VALUE * key.getAmountPerUnit();
+        return Long.MAX_VALUE;
     }
     public static Identifier makeId(String name){
         return Identifier.fromNamespaceAndPath(MODID, name);

@@ -64,7 +64,11 @@ public class KeyList {
     }
 
     public void getAvailableStacks(KeyCounter out){
-        this.keys.forEach(keySupplier -> out.add(keySupplier.get(), Meinfinitycell.getMax(keySupplier.get())));
+        this.keys.forEach(keySupplier -> {
+            if(keySupplier != null && keySupplier.get() != null){
+                out.add(keySupplier.get(), Meinfinitycell.getMax(keySupplier.get()));
+            }
+        });
     }
 
     public boolean isEmpty(){
@@ -90,7 +94,11 @@ public class KeyList {
                 content = new ArrayList<AEKey>();
                 int maxCountShown = AEConfig.instance().getTooltipMaxCellContentShown();
 
-                keys.forEach(keySupplier -> ((List)content).add(new GenericStack(keySupplier.get(),Meinfinitycell.getMax(keySupplier.get()))));
+                keys.forEach(keySupplier -> {
+                    if(keySupplier != null && keySupplier.get() != null){
+                        ((List)content).add(new GenericStack(keySupplier.get(),Meinfinitycell.getMax(keySupplier.get())));
+                    }
+                });
 
                 hasMoreContent = ((List)content).size() > maxCountShown;
                 if (((List)content).size() > maxCountShown) {
