@@ -6,5 +6,6 @@
   "tooltip.meinfinitycell.infinity_in": "Infinity in %d",
   "tooltip.meinfinitycell.fluid.infinity_in": "Infinity in %d as Fluid",
   "tooltip.meinfinitycell.chemical.infinity_in": "Infinity in %d as Chemical",
-  "tooltip.meinfinitycell.type": " Type"
+  "tooltip.meinfinitycell.type": " Type",
+  "jei.meinfinitycell.cell_info": "Infinity Cell Info"
 }

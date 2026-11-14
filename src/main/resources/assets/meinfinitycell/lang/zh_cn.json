@@ -6,5 +6,6 @@
   "tooltip.meinfinitycell.infinity_in": "在%d中无限",
   "tooltip.meinfinitycell.fluid.infinity_in": "在%d中以流体形式无限",
   "tooltip.meinfinitycell.chemical.infinity_in": "在%d中以化学品形式无限",
-  "tooltip.meinfinitycell.type": " 类型"
+  "tooltip.meinfinitycell.type": " 类型",
+  "jei.meinfinitycell.cell_info": "无限元件信息"
 }

@@ -97,8 +97,8 @@ dependencies {
     implementation "curse.maven:applied-mekanistics-574300:7096962"
 
     //kubejs
-    implementation "curse.maven:kubejs-238086:7276129"
-    implementation "curse.maven:rhino-416294:7104526"
+    implementation "curse.maven:kubejs-238086:9396059"
+    implementation "curse.maven:rhino-416294:8463898"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

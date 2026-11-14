@@ -37,4 +37,10 @@ StartupEvents.registry("item",event =>{
         keys.add(AEKeyHelper.item('minecraft:enchanted_book','[stored_enchantments={levels:{"minecraft:luck_of_the_sea":1}}]'))
     }))
 })
+
+//By Mod
+event.create("mod_infinities_cell","meinfinitycell:infinities_cell").setName(Text.literal("ModTest")).byMod("ae2")
+
+//By Tag
+event.create("tag_infinities_cell","meinfinitycell:infinities_cell").setName(Text.literal("TagTest")).byTags(AEKeyHelper.itemTag("minecraft:planks"),AEKeyHelper.fluidTag("minecraft:water"))
 ```

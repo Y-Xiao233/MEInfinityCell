@@ -2,6 +2,7 @@ package net.yxiao233.meinfinitycell;
 
 import appeng.api.stacks.AEKey;
 import appeng.api.storage.StorageCells;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -21,7 +22,11 @@ public class Meinfinitycell {
         StorageCells.addCellHandler(InfinitiesCellInventory.HANDLER);
     }
 
+    public static ResourceLocation makeId(String path){
+        return ResourceLocation.fromNamespaceAndPath(MODID,path);
+    }
+
     public static long getMax(AEKey key){
-        return (long) Integer.MAX_VALUE * key.getAmountPerUnit();
+        return Long.MAX_VALUE;
     }
 }

@@ -14,6 +14,8 @@ import net.yxiao233.meinfinitycell.common.items.InfinitiesCell;
 import net.yxiao233.meinfinitycell.common.utils.KeyList;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Supplier;
+
 public class InfinitiesCellInventory implements StorageCell {
     private final ItemStack stack;
     private final KeyList keys;
@@ -23,7 +25,7 @@ public class InfinitiesCellInventory implements StorageCell {
             throw new IllegalArgumentException("Cell isn't an infinity cell!");
         }
         this.stack = stack;
-        this.keys = cell.getKeys();
+        this.keys = cell.getKeys().get();
     }
     @Override
     public CellState getStatus() {
